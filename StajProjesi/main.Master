@@ -1,0 +1,178 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="main.master.cs" Inherits="StajProjesi.main" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <title>Görsel Eğitim</title>
+    <link href="/style.css" rel="stylesheet" />
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"> </script>
+
+
+    <script type="text/javascript">
+
+        $("document").ready(function () {
+
+            $("header nav ul li.konular-wrap").mouseover(function () {
+                $("header nav ul li.konular-wrap .konular").css("display", "block")
+            })
+            $("header nav ul li.konular-wrap").mouseleave(function () {
+                $("header nav ul li.konular-wrap .konular").css("display", "none")
+            })
+
+        })
+
+    </script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        
+
+        <div id="wrapper"> 
+
+
+            <header>
+
+                <div class="logo">
+                    LOGO
+                </div>
+
+                <nav>
+
+                    <ul>
+                        <li>
+                            <a href="/">Anasayfa</a>
+                        </li>
+                        <li class="konular-wrap">
+                            Konular
+                            <div class="konular">
+                                <ul>
+                                    <li>
+                                        <a href="programlama.aspx">Programlama</a>
+                                    </li>
+                                    <li> 
+                                        <a href="web.aspx">Web</a> 
+                                    </li>
+                                    <li>
+                                        <a href="tasarim.aspx">Tasarım</a> 
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </li>
+                        <li>
+                           <a href="default.aspx">Duyurular</a>
+                        </li>
+                        <li>
+                           <a href="iletişim.aspx">İletişim</a>
+                        </li>
+                    </ul>
+
+                </nav>
+
+                <div class="arama-wrap">
+
+                    <asp:TextBox ID="txtArama" CssClass="txtArama" runat="server" placeholder="arama" />
+
+                    <asp:Button ID="btnArama" CssClass="btnArama" Text="Ara" runat="server" />
+
+
+                </div>
+
+
+            </header>
+
+
+            <div class="banner">
+                Soru da bilgiden doğar,cevap da.
+            </div>
+
+            <div class="sol-taraf">
+
+                <div class="hizli-kayit">
+
+                    <div class="ust">
+                        Hızlı Kayıt Ol
+                    </div>
+                    <div class="alt">
+
+                        <div class="kullanici">
+                            <span>Kullanıcı Adı</span>
+                            <asp:TextBox ID="txtKullaniciAdi" CssClass="textbox" runat="server" />
+                         </div>
+
+                         <div class="sifre">
+                             <span>Şifre</span>
+                             <asp:TextBox ID="txtSifre" CssClass="textbox" runat="server" TextMode="Password" />
+                        </div>
+
+                        <asp:Button ID="btnKayit" CssClass ="btnKayit" Text="Kaydet" runat="server" OnClick="btnKayit_Click" />
+                        <asp:Label ID="lblSonuc" Text="" runat="server" />
+
+                    </div>
+
+                </div>
+
+
+                <div class="duyurular">
+
+                    <div class="ust">
+                        Duyurular
+                    </div>
+
+                    <div class="alt">
+
+                        <asp:ListView ID="lstDuyuru" runat="server">
+                            <ItemTemplate>  
+                                <div class="duyuru-wrap">
+                                    <asp:Label Text='<%#Eval("Baslik") %>' runat="server" /><br />
+                                    <asp:Label Text='<%#Eval("Duyuru") %>' runat="server" /><br />
+                                    <asp:Label Text='<%#Eval("Tarih") %>' runat="server" />
+                                </div>
+                            </ItemTemplate>
+                        </asp:ListView>
+
+                        
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="icerik">
+
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                 </asp:ContentPlaceHolder>
+
+
+            </div>
+
+            <footer>
+                Staj Projesi Merve Nur Toprak @2020
+            </footer>
+      
+            
+        
+        
+        
+        
+        
+        </div>
+
+
+
+
+            
+        
+    </form>
+</body>
+</html>
